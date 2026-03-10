@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aleksandra — Ścieżka do Specjalistki od Nieruchomości</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f7f3ee;
+    --warm-white: #faf8f5;
+    --dark: #1a1612;
+    --mid: #3d3530;
+    --text: #4a4340;
+    --accent: #b5835a;
+    --accent-light: #d4a882;
+    --accent-pale: #f0e3d6;
+    --gold: #c9a96e;
+    --line: #e2d8cf;
+    --year1: #7a9e8e;
+    --year2: #7e8fa4;
+    --year3: #9e7e8f;
+    --year4: #b5835a;
+    --year5: #c9a96e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 40px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 30%, rgba(181,131,90,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 80% 80%, rgba(201,169,110,0.1) 0%, transparent 60%);
+  }
+
+  .hero-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.3s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 300;
+    color: var(--warm-white);
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.5s forwards;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent-light);
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(247,243,238,0.6);
+    margin-top: 20px;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.7s forwards;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 60px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.9s forwards;
+  }
+
+  .hero-stat {
+    text-align: center;
+  }
+
+  .hero-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .hero-stat-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(247,243,238,0.45);
+    margin-top: 6px;
+  }
+
+  .hero-divider {
+    width: 1px;
+    height: 60px;
+    background: rgba(181,131,90,0.3);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeUp 1s ease 1.3s forwards;
+  }
+
+  .scroll-hint span {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(247,243,238,0.3);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(181,131,90,0.5), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(247,243,238,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    padding: 0 40px;
+  }
+
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    height: 56px;
+    overflow-x: auto;
+  }
+
+  .nav-inner::-webkit-scrollbar { display: none; }
+
+  .nav-item {
+    flex-shrink: 0;
+    padding: 0 20px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text);
+    opacity: 0.5;
+    transition: opacity 0.2s, color 0.2s;
+    position: relative;
+  }
+
+  .nav-item:hover { opacity: 1; }
+
+  .nav-item.y1:hover, .nav-item.y1.active { color: var(--year1); opacity: 1; }
+  .nav-item.y2:hover, .nav-item.y2.active { color: var(--year2); opacity: 1; }
+  .nav-item.y3:hover, .nav-item.y3.active { color: var(--year3); opacity: 1; }
+  .nav-item.y4:hover, .nav-item.y4.active { color: var(--year4); opacity: 1; }
+  .nav-item.y5:hover, .nav-item.y5.active { color: var(--year5); opacity: 1; }
+  .nav-item.overview:hover, .nav-item.overview.active { color: var(--accent); opacity: 1; }
+
+  .nav-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    right: 20px;
+    height: 2px;
+    background: currentColor;
+  }
+
+  /* ── PHILOSOPHY ── */
+  .philosophy {
+    background: var(--dark);
+    color: var(--cream);
+    padding: 80px 40px;
+  }
+
+  .philosophy-inner {
+    max-width: 820px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .philosophy-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3.5vw, 32px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--accent-pale);
+    margin-bottom: 32px;
+  }
+
+  .philosophy-text {
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(247,243,238,0.55);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* ── ROADMAP OVERVIEW ── */
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300;
+    color: var(--dark);
+    line-height: 1.15;
+    margin-bottom: 48px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* ── YEAR CARDS OVERVIEW ── */
+  .years-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    margin-bottom: 80px;
+  }
+
+  .year-card {
+    background: var(--warm-white);
+    padding: 32px 24px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .year-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--color);
+  }
+
+  .year-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    z-index: 1;
+  }
+
+  .year-card .year-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 300;
+    color: var(--color);
+    line-height: 1;
+    margin-bottom: 12px;
+    opacity: 0.25;
+  }
+
+  .year-card .year-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--dark);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .year-card .year-desc {
+    font-size: 12px;
+    color: var(--text);
+    opacity: 0.65;
+    line-height: 1.6;
+  }
+
+  .year-card .year-milestone {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--color);
+  }
+
+  /* ── YEAR SECTIONS ── */
+  .year-section {
+    padding: 80px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .year-header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 40px;
+    align-items: start;
+    margin-bottom: 64px;
+  }
+
+  .year-big-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 120px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--ycolor);
+    opacity: 0.12;
+    white-space: nowrap;
+  }
+
+  .year-header-text {}
+
+  .year-header-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--ycolor);
+    margin-bottom: 12px;
+  }
+
+  .year-header-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 300;
+    color: var(--dark);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .year-header-desc {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+    max-width: 600px;
+  }
+
+  /* ── MONTHS GRID ── */
+  .months-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .month-card {
+    background: var(--warm-white);
+    border-radius: 2px;
+    padding: 24px;
+    position: relative;
+    transition: box-shadow 0.2s;
+  }
+
+  .month-card:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+
+  .month-card::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--ycolor);
+    opacity: 0.4;
+    border-radius: 2px 0 0 2px;
+  }
+
+  .month-num {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ycolor);
+    margin-bottom: 6px;
+    opacity: 0.7;
+  }
+
+  .month-goal {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--dark);
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+
+  .month-tasks {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--text);
+    opacity: 0.8;
+  }
+
+  .month-tasks li {
+    list-style: none;
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 3px;
+  }
+
+  .month-tasks li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--ycolor);
+    opacity: 0.5;
+  }
+
+  /* ── MILESTONE BANNER ── */
+  .milestone-banner {
+    background: var(--dark);
+    padding: 40px 48px;
+    margin-top: 48px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .milestone-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+  }
+
+  .milestone-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .milestone-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.5;
+  }
+
+  /* ── INSIGHTS ── */
+  .insights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 80px;
+  }
+
+  .insight-card {
+    background: var(--warm-white);
+    padding: 40px 32px;
+  }
+
+  .insight-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--accent);
+    opacity: 0.3;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .insight-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--dark);
+    margin-bottom: 12px;
+  }
+
+  .insight-text {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text);
+    opacity: 0.75;
+  }
+
+  /* ── NICHES ── */
+  .niches-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 48px;
+  }
+
+  .niche-card {
+    padding: 32px;
+    border: 1px solid var(--line);
+    position: relative;
+  }
+
+  .niche-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 300;
+    color: var(--accent);
+    opacity: 0.15;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .niche-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--dark);
+    margin-bottom: 10px;
+  }
+
+  .niche-text {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--text);
+    opacity: 0.75;
+  }
+
+  /* ── SKILLS TIMELINE ── */
+  .skills-section {
+    background: var(--dark);
+    color: var(--cream);
+    padding: 80px 40px;
+    margin-top: 80px;
+  }
+
+  .skills-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .skills-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 16px;
+  }
+
+  .skills-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 48px;
+  }
+
+  .skills-bars {
+    display: grid;
+    gap: 20px;
+  }
+
+  .skill-bar-item {
+    display: grid;
+    grid-template-columns: 200px 1fr 60px;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .skill-bar-name {
+    font-size: 13px;
+    color: rgba(247,243,238,0.7);
+  }
+
+  .skill-bar-track {
+    height: 4px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .skill-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: linear-gradient(to right, var(--accent), var(--gold));
+    transform-origin: left;
+    animation: barGrow 1.5s ease forwards;
+    transform: scaleX(0);
+  }
+
+  .skill-bar-year {
+    font-size: 11px;
+    color: var(--gold);
+    text-align: right;
+    opacity: 0.7;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    color: var(--cream);
+    padding: 60px 40px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--accent-light);
+    margin-bottom: 8px;
+  }
+
+  .footer-tagline {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(247,243,238,0.3);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 0.8; transform: scaleY(1.1); }
+  }
+
+  @keyframes barGrow {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  /* ── TABLET ── */
+  @media (max-width: 900px) {
+    .years-grid { grid-template-columns: repeat(2, 1fr); gap: 2px; }
+    .insights-grid { grid-template-columns: 1fr; }
+    .niches-grid { grid-template-columns: 1fr; }
+    .skill-bar-item { grid-template-columns: 140px 1fr 48px; }
+    .year-header { grid-template-columns: 1fr; gap: 16px; }
+    .year-big-num { font-size: 72px; }
+    .hero-stats { gap: 32px; }
+    .milestone-banner { flex-direction: column; align-items: flex-start; }
+  }
+
+  /* ── MOBILE (iPhone 17 Pro Max = 430px logical) ── */
+  @media (max-width: 480px) {
+    /* Global */
+    body { font-size: 15px; }
+
+    /* Hero */
+    .hero { padding: 80px 24px 60px; min-height: 100svh; }
+    .hero-label { font-size: 10px; letter-spacing: 3px; margin-bottom: 24px; }
+    .hero-title { font-size: 44px; letter-spacing: -0.5px; }
+    .hero-subtitle { font-size: 17px; margin-bottom: 36px; }
+    .hero-stats { flex-direction: row; gap: 0; justify-content: center; }
+    .hero-stat-num { font-size: 34px; }
+    .hero-stat-label { font-size: 10px; }
+    .hero-divider { width: 1px; height: 44px; margin: 0 20px; }
+    .scroll-hint { bottom: 24px; }
+
+    /* Nav */
+    nav { padding: 0; }
+    .nav-inner { padding: 0 16px; gap: 0; }
+    .nav-item { padding: 0 12px; font-size: 11px; letter-spacing: 1px; }
+
+    /* Philosophy */
+    .philosophy { padding: 56px 24px; }
+    .philosophy-quote { font-size: 19px; }
+    .philosophy-text { font-size: 13px; }
+
+    /* Sections */
+    .section { padding: 56px 20px; }
+    .section-label { font-size: 10px; }
+    .section-title { font-size: 28px; margin-bottom: 32px; }
+
+    /* Year cards overview */
+    .years-grid { grid-template-columns: 1fr; gap: 2px; }
+    .year-card { padding: 24px 20px; }
+    .year-card .year-num { font-size: 40px; margin-bottom: 8px; }
+    .year-card .year-title { font-size: 17px; }
+    .year-card .year-desc { font-size: 13px; }
+    .year-card .year-milestone { font-size: 11px; margin-top: 14px; }
+
+    /* Year section headers */
+    .year-section { padding: 56px 0; }
+    .year-header { gap: 8px; margin-bottom: 36px; }
+    .year-big-num { font-size: 52px; display: none; } /* ukryjemy wielką cyfrę — mamy ją w .year-header-label */
+    .year-header-label { font-size: 10px; letter-spacing: 3px; }
+    .year-header-title { font-size: 26px; }
+    .year-header-desc { font-size: 14px; line-height: 1.65; }
+
+    /* Month cards */
+    .months-grid { grid-template-columns: 1fr; gap: 12px; }
+    .month-card { padding: 20px 20px 20px 24px; }
+    .month-num { font-size: 10px; }
+    .month-goal { font-size: 18px; }
+    .month-tasks { font-size: 13px; }
+    .month-tasks li { margin-bottom: 4px; }
+
+    /* Milestone banner */
+    .milestone-banner { padding: 28px 20px; gap: 16px; margin-top: 32px; }
+    .milestone-icon { font-size: 26px; }
+    .milestone-label { font-size: 9px; }
+    .milestone-text { font-size: 17px; }
+
+    /* Insights */
+    .insights-grid { gap: 2px; margin-top: 48px; }
+    .insight-card { padding: 28px 20px; }
+    .insight-num { font-size: 36px; }
+    .insight-title { font-size: 18px; }
+    .insight-text { font-size: 13px; }
+
+    /* Niches */
+    .niches-grid { gap: 12px; margin-top: 32px; }
+    .niche-card { padding: 24px 20px; }
+    .niche-num { font-size: 40px; }
+    .niche-title { font-size: 18px; }
+    .niche-text { font-size: 13px; }
+
+    /* Skills */
+    .skills-section { padding: 56px 20px; }
+    .skills-label { font-size: 10px; }
+    .skills-title { font-size: 26px; margin-bottom: 32px; }
+    .skills-bars { gap: 16px; }
+    .skill-bar-item { grid-template-columns: 1fr auto; gap: 8px 16px; grid-template-rows: auto auto; }
+    .skill-bar-name { font-size: 13px; grid-column: 1; grid-row: 1; }
+    .skill-bar-year { font-size: 11px; grid-column: 2; grid-row: 1; text-align: right; }
+    .skill-bar-track { grid-column: 1 / -1; grid-row: 2; }
+
+    /* Footer */
+    footer { padding: 48px 24px; }
+    .footer-name { font-size: 28px; }
+    .footer-tagline { font-size: 10px; letter-spacing: 2px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-label">Plan 5-letni · 2026–2031</div>
+  <h1 class="hero-title"><em>Aleksandra</em><br>Specjalistka od Nieruchomości</h1>
+  <p class="hero-subtitle">Od pierwszego kroku do własnego biznesu</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">5</div>
+      <div class="hero-stat-label">Lat</div>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">60</div>
+      <div class="hero-stat-label">Miesięcy</div>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">1</div>
+      <div class="hero-stat-label">Cel</div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Przewiń</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="#overview" class="nav-item overview">Przegląd</a>
+    <a href="#rok1" class="nav-item y1">Rok 1</a>
+    <a href="#rok2" class="nav-item y2">Rok 2</a>
+    <a href="#rok3" class="nav-item y3">Rok 3</a>
+    <a href="#rok4" class="nav-item y4">Rok 4</a>
+    <a href="#rok5" class="nav-item y5">Rok 5</a>
+    <a href="#nisza" class="nav-item overview">Nisza</a>
+    <a href="#kompetencje" class="nav-item overview">Kompetencje</a>
+  </div>
+</nav>
+
+<!-- PHILOSOPHY -->
+<div class="philosophy">
+  <div class="philosophy-inner">
+    <p class="philosophy-quote">"AI wypycha rutynę, a premiuje ludzi, którzy łączą technologię z relacją, oceną sytuacji i odpowiedzialnością."</p>
+    <p class="philosophy-text">Ten plan zakłada: najpierw odbudowę sprawczości i rytmu, potem wejście do nieruchomości od zaplecza i procesu, dopiero później sprzedaż frontową — a na końcu własną specjalizację lub mikrobiuro. Nie presja sprzedażowa od razu, tylko budowanie przewagi krok po kroku.</p>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div id="overview" class="section">
+  <div class="section-label fade-in">Ścieżka Rozwoju</div>
+  <h2 class="section-title fade-in">Pięć lat,<br><em>pięć transformacji</em></h2>
+
+  <div class="years-grid fade-in">
+    <a href="#rok1" class="year-card" style="--color: var(--year1)">
+      <div class="year-num">01</div>
+      <div class="year-title">Odbudowa i Pierwsze Kompetencje</div>
+      <div class="year-desc">Stały rytm tygodnia, portfolio, analiza rynku, podstawy copywritingu i AI w ofertach.</div>
+      <div class="year-milestone">→ Gotowość do wejścia w branżę</div>
+    </a>
+    <a href="#rok2" class="year-card" style="--color: var(--year2)">
+      <div class="year-num">02</div>
+      <div class="year-title">Wejście do Branży od Zaplecza</div>
+      <div class="year-desc">Praktyczne doświadczenie, CRM, dokumenty, pierwsze odpowiedzialności w biurze.</div>
+      <div class="year-milestone">→ Junior „wewnątrz" branży</div>
+    </a>
+    <a href="#rok3" class="year-card" style="--color: var(--year3)">
+      <div class="year-num">03</div>
+      <div class="year-title">Przejście do Roli Doradczej</div>
+      <div class="year-desc">Komunikacja z klientem, prezentacje, negocjacje, marka osobista, pierwsze wyniki.</div>
+      <div class="year-milestone">→ Junior doradcy i pośrednictwa</div>
+    </a>
+    <a href="#rok4" class="year-card" style="--color: var(--year4)">
+      <div class="year-num">04</div>
+      <div class="year-title">Specjalizacja i Marka</div>
+      <div class="year-desc">Nisza, portfolio case studies, rekomendacje, stabilizacja finansowa, współprace.</div>
+      <div class="year-milestone">→ Specjalistka z niszą i procesem</div>
+    </a>
+    <a href="#rok5" class="year-card" style="--color: var(--year5)">
+      <div class="year-num">05</div>
+      <div class="year-title">Samodzielność Biznesowa</div>
+      <div class="year-desc">Własna marka, model biznesowy, system poleceń, porządek operacyjny, pełna niezależność.</div>
+      <div class="year-milestone">→ Własny biznes lub butik premium</div>
+    </a>
+  </div>
+</div>
+
+<!-- ROK 1 -->
+<div id="rok1" class="section" style="--ycolor: var(--year1)">
+  <div class="year-section">
+    <div class="year-header fade-in">
+      <div class="year-big-num" style="color: var(--year1)">01</div>
+      <div class="year-header-text">
+        <div class="year-header-label" style="color: var(--year1)">Rok Pierwszy · Miesiące 1–12</div>
+        <h2 class="year-header-title">Odbudowa sprawczości<br>i pierwsze kompetencje rynkowe</h2>
+        <p class="year-header-desc">Stały rytm tygodnia, pierwsze portfolio, analiza rynku online, copywriting ofert, AI workflow, wizualność. Jeszcze nie pośredniczka — ale osoba, która umie sensownie przygotować ofertę i myśli procesowo.</p>
+      </div>
+    </div>
+
+    <div class="months-grid">
+      <div class="month-card fade-in" style="--ycolor: var(--year1)">
+        <div class="month-num">Miesiąc 1</div>
+        <div class="month-goal">Wyjście z chaosu</div>
+        <ul class="month-tasks">
+          <li>Stały rytm tygodnia: pobudka, sen</li>
+          <li>3 bloki pracy własnej po 60 min tygodniowo</li>
+          <li>2 wyjścia z domu tygodniowo</li>
+          <li>Mapa zainteresowań wokół nieruchomości</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year1)">
+        <div class="month-num">Miesiąc 2</div>
+        <div class="month-goal">Zacząć działać, nie tylko myśleć</div>
+        <ul class="month-tasks">
+          <li>Analiza 30 ogłoszeń z Otodom/OLX</li>
+          <li>Co jest napisane źle vs. profesjonalnie</li>
+          <li>Pierwszy mini-raport: „jak sprzedają się nieruchomości online"</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year1)">
+        <div class="month-num">Miesiąc 3</div>
+        <div class="month-goal">Nauczyć się pisać ofertowo</div>
+        <ul class="month-tasks">
+          <li>Przepisanie 10 słabych ogłoszeń</li>
+          <li>Podstawy copywritingu i struktura ogłoszenia</li>
+          <li>Proste prompty AI do wersji roboczych</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year1)">
+        <div class="month-num">Miesiąc 4</div>
+        <div class="month-goal">Wejście w wizualność</div>
+        <ul class="month-tasks">
+          <li>Nauka Canvy i podstawy estetyki ofert</li>
+          <li>5 kart ofertowych</li>
+          <li>3 grafiki social media dla fikcyjnego biura</li>
+          <li>1 prosty PDF prezentujący nieruchomość</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year1)">
+        <div class="month-num">Miesiąc 5</div>
+        <div class="month-goal">Zrozumieć proces sprzedaży</div>
+        <ul class="month-tasks">
+          <li>Rozpisanie całego procesu pośrednictwa</li>
+          <li>Od pozyskania klienta do podpisania umowy</li>
+          <li>Analiza każdego etapu: co i dlaczego</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year1)">
+        <div class="month-num">Miesiąc 6</div>
+        <div class="month-goal">Pierwsza formalna strona branży</div>
+        <ul class="month-tasks">
+          <li>Księga wieczysta i prawa własności</li>
+          <li>Najem, zadatek vs. zaliczka</li>
+          <li>Rola pośrednika i znaczenie OC</li>
+          <li>Poziom praktyczny, nie akademicki</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year1)">
+        <div class="month-num">Miesiąc 7</div>
+        <div class="month-goal">Portfolio</div>
+        <ul class="month-tasks">
+          <li>10 przeredagowanych ofert</li>
+          <li>3 karty nieruchomości</li>
+          <li>1 analiza rynku lokalnego</li>
+          <li>1 checklista dokumentów do sprzedaży</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year1)">
+        <div class="month-num">Miesiąc 8</div>
+        <div class="month-goal">Oswojenie z rozmową z ludźmi</div>
+        <ul class="month-tasks">
+          <li>Raz w tygodniu kontrolowana rozmowa</li>
+          <li>Telefon do firmy, zapytanie o ofertę</li>
+          <li>Ćwiczenie tolerancji napięcia</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year1)">
+        <div class="month-num">Miesiąc 9</div>
+        <div class="month-goal">AI workflow dla nieruchomości</div>
+        <ul class="month-tasks">
+          <li>Prompty do opisu nieruchomości</li>
+          <li>Lista pytań do właściciela (AI)</li>
+          <li>Porównanie ofert, szkic postów social media</li>
+          <li>Checklista prezentacji mieszkania</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year1)">
+        <div class="month-num">Miesiąc 10</div>
+        <div class="month-goal">Mini-specjalizacja</div>
+        <ul class="month-tasks">
+          <li>Wybór 1 obszaru największego zainteresowania</li>
+          <li>Mieszkania na start / premium / najem</li>
+          <li>Home staging / marketing ofert / research rynku</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year1)">
+        <div class="month-num">Miesiąc 11</div>
+        <div class="month-goal">Pierwszy projekt „jak dla klienta"</div>
+        <ul class="month-tasks">
+          <li>Pełna obsługa przykładowego mieszkania</li>
+          <li>Analiza grupy docelowej, poprawiony opis</li>
+          <li>Plan zdjęć, karta PDF, plan promocji</li>
+          <li>Scenariusz prezentacji</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year1)">
+        <div class="month-num">Miesiąc 12</div>
+        <div class="month-goal">Podsumowanie roku</div>
+        <ul class="month-tasks">
+          <li>Portfolio 15–20 elementów</li>
+          <li>Podstawowe obycie z branżą</li>
+          <li>Jeden wybrany kierunek zainteresowania</li>
+          <li>Gotowość do wejścia na zaplecze biura</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="milestone-banner fade-in">
+      <div class="milestone-icon">🏛️</div>
+      <div>
+        <div class="milestone-label">Kamień milowy · Koniec roku 1</div>
+        <div class="milestone-text">Jeszcze nie jest pośredniczką. Ma być osobą, która umie sensownie przygotować ofertę, myśli procesowo i nie boi się podstaw branży.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ROK 2 -->
+<div id="rok2" class="section" style="--ycolor: var(--year2)">
+  <div class="year-section">
+    <div class="year-header fade-in">
+      <div class="year-big-num" style="color: var(--year2)">02</div>
+      <div class="year-header-text">
+        <div class="year-header-label" style="color: var(--year2)">Rok Drugi · Miesiące 13–24</div>
+        <h2 class="year-header-title">Wejście do branży<br>od zaplecza</h2>
+        <p class="year-header-desc">Analiza rynku, obserwacja profesjonalistów, pierwsze kontakty z biurami, praktyka, CRM, dokumenty, pierwsze małe odpowiedzialności. Nie 100% prowizji i nie call-center — tylko prawdziwe doświadczenie.</p>
+      </div>
+    </div>
+
+    <div class="months-grid">
+      <div class="month-card fade-in" style="--ycolor: var(--year2)">
+        <div class="month-num">Miesiąc 13</div>
+        <div class="month-goal">Poznanie lokalnego rynku</div>
+        <ul class="month-tasks">
+          <li>Wybór 1 miasta lub dzielnicy</li>
+          <li>Raport: ceny ofertowe, typowe metraże</li>
+          <li>Profil klienta, które mieszkania schodzą szybciej</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year2)">
+        <div class="month-num">Miesiąc 14</div>
+        <div class="month-goal">Obserwacja profesjonalistów</div>
+        <ul class="month-tasks">
+          <li>Analiza 20 biur nieruchomości</li>
+          <li>Jak się pozycjonują i piszą</li>
+          <li>Jak prowadzą social media, jakich klientów obsługują</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year2)">
+        <div class="month-num">Miesiąc 15</div>
+        <div class="month-goal">Wybór modelu wejścia</div>
+        <ul class="month-tasks">
+          <li>Asystentka biura lub wsparcie marketingu ofert</li>
+          <li>Research rynku lub koordynacja dokumentów</li>
+          <li>Przygotowanie nieruchomości do publikacji</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year2)">
+        <div class="month-num">Miesiąc 16</div>
+        <div class="month-goal">Pierwszy kontakt z branżą „na serio"</div>
+        <ul class="month-tasks">
+          <li>10 zgłoszeń do dobrych biur butikowych</li>
+          <li>Propozycja: wsparcie ofert, analiza konkurencji</li>
+          <li>Materiały sprzedażowe jako oferta wartości</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year2)">
+        <div class="month-num">Miesiąc 17</div>
+        <div class="month-goal">Przygotowanie do rozmów</div>
+        <ul class="month-tasks">
+          <li>Autoprezentacja 60 sekund</li>
+          <li>Odpowiedź: „dlaczego nieruchomości?"</li>
+          <li>Pokazanie portfolio i własnej wartości</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year2)">
+        <div class="month-num">Miesiąc 18</div>
+        <div class="month-goal">Praktyka próbna</div>
+        <ul class="month-tasks">
+          <li>Staż, pół-etatu lub kilka godz. tygodniowo</li>
+          <li>Praktyka zadaniowa — nie call-center</li>
+          <li>Pierwsze prawdziwe środowisko zawodowe</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year2)">
+        <div class="month-num">Miesiąc 19</div>
+        <div class="month-goal">Opanowanie CRM i procesu leadów</div>
+        <ul class="month-tasks">
+          <li>CRM, follow-up, kalendarz klienta</li>
+          <li>Statusy spraw, porządkowanie dokumentów</li>
+          <li>Kontakty — człowiek odpowiada za standard</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year2)">
+        <div class="month-num">Miesiąc 20</div>
+        <div class="month-goal">Dokumenty</div>
+        <ul class="month-tasks">
+          <li>Księga wieczysta, pełnomocnictwa</li>
+          <li>Umowa pośrednictwa, protokół przekazania</li>
+          <li>Podstawy RODO i AML w praktyce biura</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year2)">
+        <div class="month-num">Miesiąc 21</div>
+        <div class="month-goal">Nieruchomość jako produkt</div>
+        <ul class="month-tasks">
+          <li>5 analiz: dla kogo, jak ustawić cenę</li>
+          <li>Jak pokazać, czego klient się będzie bał</li>
+          <li>Co uprzedzić w komunikacji z klientem</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year2)">
+        <div class="month-num">Miesiąc 22</div>
+        <div class="month-goal">Pierwsza odpowiedzialność</div>
+        <ul class="month-tasks">
+          <li>Publikacja oferty, aktualizacja ogłoszeń</li>
+          <li>Kontakt z fotografem</li>
+          <li>Przygotowanie danych do prezentacji</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year2)">
+        <div class="month-num">Miesiąc 23</div>
+        <div class="month-goal">Pierwsza mikronisza</div>
+        <ul class="month-tasks">
+          <li>„Marketing i prezentacja ofert"</li>
+          <li>lub „Organizacja procesu i kontakt z klientem"</li>
+          <li>Wybór oparty na realnym doświadczeniu</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year2)">
+        <div class="month-num">Miesiąc 24</div>
+        <div class="month-goal">Podsumowanie wejścia</div>
+        <ul class="month-tasks">
+          <li>Skromne, ale prawdziwe doświadczenie</li>
+          <li>Pierwsze referencje i podstawy formalne</li>
+          <li>Wiedza: czy nadaje się do frontu sprzedażowego?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="milestone-banner fade-in">
+      <div class="milestone-icon">🔑</div>
+      <div>
+        <div class="milestone-label">Kamień milowy · Koniec roku 2</div>
+        <div class="milestone-text">Jest już „wewnątrz" branży, ale nadal bez presji bycia pełnoprawną agentką. Pierwsze referencje i prawdziwe doświadczenie.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ROK 3 -->
+<div id="rok3" class="section" style="--ycolor: var(--year3)">
+  <div class="year-section">
+    <div class="year-header fade-in">
+      <div class="year-big-num" style="color: var(--year3)">03</div>
+      <div class="year-header-text">
+        <div class="year-header-label" style="color: var(--year3)">Rok Trzeci · Miesiące 25–36</div>
+        <h2 class="year-header-title">Przejście z zaplecza<br>do roli doradczej</h2>
+        <p class="year-header-desc">Komunikacja z klientem, prezentacje, obiekcje, negocjacje — to część zawodu, której AI nie zastępuje wprost. Pierwsze prawdziwe wyniki i pieniądze zależne od efektu.</p>
+      </div>
+    </div>
+
+    <div class="months-grid">
+      <div class="month-card fade-in" style="--ycolor: var(--year3)">
+        <div class="month-num">Miesiąc 25</div>
+        <div class="month-goal">Komunikacja z klientem</div>
+        <ul class="month-tasks">
+          <li>Pierwszy kontakt, kwalifikacja klienta</li>
+          <li>Pytania o potrzeby, rozmowa bez chaosu</li>
+          <li>Prowadzenie rozmowy bez nadmiernych emocji</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year3)">
+        <div class="month-num">Miesiąc 26</div>
+        <div class="month-goal">Prezentacja nieruchomości</div>
+        <ul class="month-tasks">
+          <li>Wejście, pokazanie atutów</li>
+          <li>Reagowanie na obiekcje</li>
+          <li>Zamknięcie rozmowy i następny krok</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year3)">
+        <div class="month-num">Miesiąc 27</div>
+        <div class="month-goal">Analiza klienta kupującego</div>
+        <ul class="month-tasks">
+          <li>10 person: singiel, rodzina, inwestor</li>
+          <li>Klient premium i klient ostrożny</li>
+          <li>Klient niezdecydowany — strategia obsługi</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year3)">
+        <div class="month-num">Miesiąc 28</div>
+        <div class="month-goal">Obiekcje i negocjacje</div>
+        <ul class="month-tasks">
+          <li>„Za drogo", „muszę się zastanowić"</li>
+          <li>„Inne biuro ma taniej"</li>
+          <li>Tu AI nie zastępuje człowieka</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year3)">
+        <div class="month-num">Miesiąc 29</div>
+        <div class="month-goal">Marka osobista w wersji lekkiej</div>
+        <ul class="month-tasks">
+          <li>Profesjonalny LinkedIn lub Instagram branżowy</li>
+          <li>2–4 proste materiały miesięcznie</li>
+          <li>Analiza ogłoszenia, „3 błędy sprzedających"</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year3)">
+        <div class="month-num">Miesiąc 30</div>
+        <div class="month-goal">Pierwsze samodzielne zadanie sprzedażowe</div>
+        <ul class="month-tasks">
+          <li>Kontakt z jednym właścicielem</li>
+          <li>Wstępna analiza mieszkania</li>
+          <li>Propozycja opisu i ceny ofertowej</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year3)">
+        <div class="month-num">Miesiąc 31</div>
+        <div class="month-goal">Wybór specjalizacji docelowej</div>
+        <ul class="month-tasks">
+          <li>Mieszkania premium lub najem premium</li>
+          <li>Obsługa kobiet kupujących pierwsze mieszkanie</li>
+          <li>Nieruchomości wizerunkowo dobrze opakowane</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year3)">
+        <div class="month-num">Miesiąc 32</div>
+        <div class="month-goal">AI + nieruchomości jako przewaga</div>
+        <ul class="month-tasks">
+          <li>Własny system pracy z promptami</li>
+          <li>Wzór badania nieruchomości, szablon raportu</li>
+          <li>Checklista prezentacji i po spotkaniu</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year3)">
+        <div class="month-num">Miesiąc 33</div>
+        <div class="month-goal">Pierwsza mała sprzedaż z realnym udziałem</div>
+        <ul class="month-tasks">
+          <li>Nie musi domknąć całości sama</li>
+          <li>Ale ma mieć udział w wyniku</li>
+          <li>Pierwsze pieniądze zależne od efektu</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year3)">
+        <div class="month-num">Miesiąc 34</div>
+        <div class="month-goal">Wycena na poziomie użytkowym</div>
+        <ul class="month-tasks">
+          <li>Od czego zależy cena nieruchomości</li>
+          <li>Jak czytać konkurencję rynkową</li>
+          <li>Co psuje, a co buduje przewagę cenową</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year3)">
+        <div class="month-num">Miesiąc 35</div>
+        <div class="month-goal">Trudny klient</div>
+        <ul class="month-tasks">
+          <li>Radzenie sobie z niezdecydowaniem i emocjami</li>
+          <li>Pretensje, oczekiwania nierealne</li>
+          <li>Utrzymanie profesjonalizmu pod presją</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year3)">
+        <div class="month-num">Miesiąc 36</div>
+        <div class="month-goal">Bilans roku 3</div>
+        <ul class="month-tasks">
+          <li>Pierwsze prawdziwe wyniki finansowe</li>
+          <li>Własny mikro-system pracy</li>
+          <li>Decyzja: zostaje w nieruchomościach poważnie</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="milestone-banner fade-in">
+      <div class="milestone-icon">🌿</div>
+      <div>
+        <div class="milestone-label">Kamień milowy · Koniec roku 3</div>
+        <div class="milestone-text">Z osoby „od zaplecza" staje się juniorem pośrednictwa/doradztwa. Pierwsze prawdziwe wyniki i własny mikro-system pracy.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ROK 4 -->
+<div id="rok4" class="section" style="--ycolor: var(--year4)">
+  <div class="year-section">
+    <div class="year-header fade-in">
+      <div class="year-big-num" style="color: var(--year4)">04</div>
+      <div class="year-header-text">
+        <div class="year-header-label" style="color: var(--year4)">Rok Czwarty · Miesiące 37–48</div>
+        <h2 class="year-header-title">Specjalizacja,<br>marka i większa odpowiedzialność</h2>
+        <p class="year-header-desc">Nisza, case studies, rekomendacje, formalizacja warsztatu, własny standard obsługi klienta, stabilizacja finansowa. Dobry moment na kurs branżowy i rozważenie licencji PFRN.</p>
+      </div>
+    </div>
+
+    <div class="months-grid">
+      <div class="month-card fade-in" style="--ycolor: var(--year4)">
+        <div class="month-num">Miesiąc 37</div>
+        <div class="month-goal">Wejście w niszę</div>
+        <ul class="month-tasks">
+          <li>Od teraz nie jest „od wszystkiego"</li>
+          <li>Wybór 1 niszy i budowanie wszystkiego wokół niej</li>
+          <li>Nisza jako fundament marki i reputacji</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year4)">
+        <div class="month-num">Miesiąc 38</div>
+        <div class="month-goal">Lepsze portfolio</div>
+        <ul class="month-tasks">
+          <li>5 case studies: problem → działania → wynik</li>
+          <li>Wniosek z każdego przypadku</li>
+          <li>Portfolio jako narzędzie sprzedaży siebie</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year4)">
+        <div class="month-num">Miesiąc 39</div>
+        <div class="month-goal">Poprawa jakości klienta</div>
+        <ul class="month-tasks">
+          <li>Nauka odrzucania złych leadów</li>
+          <li>Z kim warto pracować, kto rokuje</li>
+          <li>Kto tylko zużyje czas i energię</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year4)">
+        <div class="month-num">Miesiąc 40</div>
+        <div class="month-goal">Lepsza prezentacja i mowa</div>
+        <ul class="month-tasks">
+          <li>Szkolenie z prezentacji i negocjacji</li>
+          <li>Komunikacja pod presją</li>
+          <li>Praca z głosem i pewnością siebie</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year4)">
+        <div class="month-num">Miesiąc 41</div>
+        <div class="month-goal">Mocniejsza formalizacja warsztatu</div>
+        <ul class="month-tasks">
+          <li>Kurs branżowy, szkolenie transakcyjne</li>
+          <li>Rozważenie dobrowolnej licencji PFRN</li>
+          <li>Wiarygodność jako element przewagi</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year4)">
+        <div class="month-num">Miesiąc 42</div>
+        <div class="month-goal">Własny standard obsługi klienta</div>
+        <ul class="month-tasks">
+          <li>Jak prowadzi właściciela, co raportuje</li>
+          <li>Jak komunikuje ryzyka i wygląda follow-up</li>
+          <li>Pisemny, powtarzalny proces</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year4)">
+        <div class="month-num">Miesiąc 43</div>
+        <div class="month-goal">Wejście w rekomendacje</div>
+        <ul class="month-tasks">
+          <li>Każdy klient: opinia + referencja + polecenie</li>
+          <li>Zgoda na case study</li>
+          <li>System budowania reputacji</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year4)">
+        <div class="month-num">Miesiąc 44</div>
+        <div class="month-goal">Stabilizacja finansowa</div>
+        <ul class="month-tasks">
+          <li>Model z częścią przewidywalnego przychodu</li>
+          <li>Stały pipeline lub powtarzalna współpraca</li>
+          <li>Mniej uzależnienia od pojedynczych transakcji</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year4)">
+        <div class="month-num">Miesiąc 45</div>
+        <div class="month-goal">Własna baza wiedzy i treści</div>
+        <ul class="month-tasks">
+          <li>Pytania klientów i odpowiedzi</li>
+          <li>Szablony, checklisty, scenariusze rozmów</li>
+          <li>Promptbook AI — repozytorium</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year4)">
+        <div class="month-num">Miesiąc 46</div>
+        <div class="month-goal">Lepsza pozycja negocjacyjna</div>
+        <ul class="month-tasks">
+          <li>Nauka wyceniania własnej pracy</li>
+          <li>Nie tylko nieruchomości, ale swoje usługi</li>
+          <li>Cena jako komunikat wartości</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year4)">
+        <div class="month-num">Miesiąc 47</div>
+        <div class="month-goal">Współprace</div>
+        <ul class="month-tasks">
+          <li>Notariusz, fotograf, doradca kredytowy</li>
+          <li>Home stager, projektant wnętrz</li>
+          <li>Sieć partnerów jako przewaga jakościowa</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year4)">
+        <div class="month-num">Miesiąc 48</div>
+        <div class="month-goal">Decyzja strategiczna</div>
+        <ul class="month-tasks">
+          <li>Zostaje w biurze premium</li>
+          <li>Przechodzi na mocniejsze B2B</li>
+          <li>albo przygotowuje własną działalność</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="milestone-banner fade-in">
+      <div class="milestone-icon">💎</div>
+      <div>
+        <div class="milestone-label">Kamień milowy · Koniec roku 4</div>
+        <div class="milestone-text">Jest już nie „początkującą", ale specjalistką z niszą i procesem. Gotowa do decyzji o własnej drodze.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ROK 5 -->
+<div id="rok5" class="section" style="--ycolor: var(--year5)">
+  <div class="year-section">
+    <div class="year-header fade-in">
+      <div class="year-big-num" style="color: var(--year5)">05</div>
+      <div class="year-header-text">
+        <div class="year-header-label" style="color: var(--year5)">Rok Piąty · Miesiące 49–60</div>
+        <h2 class="year-header-title">Dojście do samodzielności<br>biznesowej</h2>
+        <p class="year-header-desc">Model biznesowy, oferta usługowa, marka osobista na poważnie, pierwsze zlecenia pod własnym nazwiskiem, system poleceń, specjalizacja premium. Pełna gotowość do własnego biznesu.</p>
+      </div>
+    </div>
+
+    <div class="months-grid">
+      <div class="month-card fade-in" style="--ycolor: var(--year5)">
+        <div class="month-num">Miesiąc 49</div>
+        <div class="month-goal">Model biznesowy</div>
+        <ul class="month-tasks">
+          <li>Dla kogo pracuje i jaką daje wartość</li>
+          <li>Ile bierze, czym różni się od innych</li>
+          <li>Pisemna definicja własnego biznesu</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year5)">
+        <div class="month-num">Miesiąc 50</div>
+        <div class="month-goal">Oferta usługowa</div>
+        <ul class="month-tasks">
+          <li>2–3 pakiety usługowe</li>
+          <li>Sprzedaż premium, obsługa najmu premium</li>
+          <li>Doradztwo zakupowe dla kupującego</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year5)">
+        <div class="month-num">Miesiąc 51</div>
+        <div class="month-goal">Marka osobista już „na serio"</div>
+        <ul class="month-tasks">
+          <li>Nazwa, styl komunikacji, format treści</li>
+          <li>1 strona lub landing page</li>
+          <li>Profil ekspercki — spójny wizerunek</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year5)">
+        <div class="month-num">Miesiąc 52</div>
+        <div class="month-goal">Pierwsze zlecenia pod własną marką</div>
+        <ul class="month-tasks">
+          <li>Jeszcze nie pełna niezależność</li>
+          <li>Ale klienci, którzy przychodzą konkretnie do niej</li>
+          <li>Pierwsze zlecenia z własnego kanału</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year5)">
+        <div class="month-num">Miesiąc 53</div>
+        <div class="month-goal">System poleceń</div>
+        <ul class="month-tasks">
+          <li>Prośba o polecenia jako standard</li>
+          <li>Sekwencja po obsłudze klienta</li>
+          <li>Prosty newsletter lub kontakt cykliczny</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year5)">
+        <div class="month-num">Miesiąc 54</div>
+        <div class="month-goal">Specjalizacja premium</div>
+        <ul class="month-tasks">
+          <li>Nie schodzi w masówkę ani wojny cenowe</li>
+          <li>Relacja, zaufanie, emocje klienta</li>
+          <li>Lokalna znajomość rynku — odporna na AI</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year5)">
+        <div class="month-num">Miesiąc 55</div>
+        <div class="month-goal">Porządek operacyjny</div>
+        <ul class="month-tasks">
+          <li>CRM, dokumenty, workflow AI</li>
+          <li>Raportowanie, kalendarz, standard odpowiedzi</li>
+          <li>Biznes, który działa bez chaosu</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year5)">
+        <div class="month-num">Miesiąc 56</div>
+        <div class="month-goal">Finansowa dorosłość</div>
+        <ul class="month-tasks">
+          <li>Koszt pozyskania klienta i konwersja</li>
+          <li>Średnia prowizja, wartość polecenia</li>
+          <li>Rentowność kanałów — świadome liczenie</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year5)">
+        <div class="month-num">Miesiąc 57</div>
+        <div class="month-goal">Wybór skali</div>
+        <ul class="month-tasks">
+          <li>Butik solo lub współpraca partnerska</li>
+          <li>Mikro-zespół 2–3 osoby</li>
+          <li>Model doradczy bez budowy dużego biura</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year5)">
+        <div class="month-num">Miesiąc 58</div>
+        <div class="month-goal">Reputacja ekspercka</div>
+        <ul class="month-tasks">
+          <li>Raport lokalnego rynku</li>
+          <li>Poradnik dla sprzedających</li>
+          <li>Analiza segmentu premium, błędy inwestorów</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year5)">
+        <div class="month-num">Miesiąc 59</div>
+        <div class="month-goal">Formalizacja działalności</div>
+        <ul class="month-tasks">
+          <li>Jasny model działania, OC</li>
+          <li>Wzory dokumentów</li>
+          <li>Podstawy księgowe i organizacyjne</li>
+        </ul>
+      </div>
+      <div class="month-card fade-in" style="--ycolor: var(--year5)">
+        <div class="month-num">Miesiąc 60</div>
+        <div class="month-goal">Przegląd całych 5 lat</div>
+        <ul class="month-tasks">
+          <li>Samodzielne prowadzenie klienta od A do Z</li>
+          <li>Nisza + proces + przewaga AI</li>
+          <li>Portfolio, rekomendacje i pełna gotowość</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="milestone-banner fade-in">
+      <div class="milestone-icon">🏆</div>
+      <div>
+        <div class="milestone-label">Kamień milowy · Koniec roku 5</div>
+        <div class="milestone-text">To już nie jest „dziewczyna, która może kiedyś spróbuje". To doradczyni i specjalistka od nieruchomości z realnym potencjałem na własny biznes.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NISZE -->
+<div id="nisza" class="section">
+  <div class="section-label fade-in">Docelowa nisza</div>
+  <h2 class="section-title fade-in">Trzy najbardziej<br><em>obiecujące kierunki</em></h2>
+
+  <div class="niches-grid">
+    <div class="niche-card fade-in">
+      <div class="niche-num">01</div>
+      <div class="niche-title">Nieruchomości premium / estetyczne</div>
+      <div class="niche-text">Dobre, jeśli ma wyczucie stylu, lubi kontrolę jakości i chce pracować bardziej prestiżowo. Klient premium płaci za doświadczenie i relację, nie za najtańszą ofertę.</div>
+    </div>
+    <div class="niche-card fade-in">
+      <div class="niche-num">02</div>
+      <div class="niche-title">Obsługa klienta kupującego</div>
+      <div class="niche-text">Dobre, jeśli mocniejsza okaże się analiza potrzeb i prowadzenie procesu niż agresywna sprzedaż. Doradztwo zakupowe jako niezależna usługa — rosnący rynek w Polsce.</div>
+    </div>
+    <div class="niche-card fade-in">
+      <div class="niche-num">03</div>
+      <div class="niche-title">Marketing ofert + strategia sprzedaży</div>
+      <div class="niche-text">Najbezpieczniejsza ścieżka wejścia, jeśli kontakt społeczny nadal będzie wymagający. Łączy mocne strony z roku 1: copywriting, wizualność, AI, analiza rynku.</div>
+    </div>
+  </div>
+</div>
+
+<!-- KOMPETENCJE -->
+<div class="skills-section" id="kompetencje">
+  <div class="skills-inner">
+    <div class="skills-label">Mapa kompetencji</div>
+    <h2 class="skills-title">Co buduje przewagę<br>nad innymi agentami</h2>
+
+    <div class="skills-bars">
+      <div class="skill-bar-item fade-in">
+        <div class="skill-bar-name">Copywriting ofert</div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 90%; animation-delay: 0.1s"></div></div>
+        <div class="skill-bar-year">Rok 1</div>
+      </div>
+      <div class="skill-bar-item fade-in">
+        <div class="skill-bar-name">AI workflow</div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 85%; animation-delay: 0.2s"></div></div>
+        <div class="skill-bar-year">Rok 1–2</div>
+      </div>
+      <div class="skill-bar-item fade-in">
+        <div class="skill-bar-name">Wizualność i estetyka ofert</div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 80%; animation-delay: 0.3s"></div></div>
+        <div class="skill-bar-year">Rok 1</div>
+      </div>
+      <div class="skill-bar-item fade-in">
+        <div class="skill-bar-name">Analiza rynku lokalnego</div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 85%; animation-delay: 0.35s"></div></div>
+        <div class="skill-bar-year">Rok 2</div>
+      </div>
+      <div class="skill-bar-item fade-in">
+        <div class="skill-bar-name">CRM i proces leadów</div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 75%; animation-delay: 0.4s"></div></div>
+        <div class="skill-bar-year">Rok 2</div>
+      </div>
+      <div class="skill-bar-item fade-in">
+        <div class="skill-bar-name">Komunikacja z klientem</div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 88%; animation-delay: 0.5s"></div></div>
+        <div class="skill-bar-year">Rok 3</div>
+      </div>
+      <div class="skill-bar-item fade-in">
+        <div class="skill-bar-name">Negocjacje</div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 78%; animation-delay: 0.6s"></div></div>
+        <div class="skill-bar-year">Rok 3</div>
+      </div>
+      <div class="skill-bar-item fade-in">
+        <div class="skill-bar-name">Marka osobista</div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 82%; animation-delay: 0.7s"></div></div>
+        <div class="skill-bar-year">Rok 3–4</div>
+      </div>
+      <div class="skill-bar-item fade-in">
+        <div class="skill-bar-name">Specjalizacja niszowa</div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 90%; animation-delay: 0.8s"></div></div>
+        <div class="skill-bar-year">Rok 4</div>
+      </div>
+      <div class="skill-bar-item fade-in">
+        <div class="skill-bar-name">Model biznesowy i finanse</div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 85%; animation-delay: 0.9s"></div></div>
+        <div class="skill-bar-year">Rok 5</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INSIGHTS -->
+<div class="section">
+  <div class="section-label fade-in">Kluczowe zasady</div>
+  <h2 class="section-title fade-in">Czego <em>nie robić</em><br>i na co uważać</h2>
+
+  <div class="insights-grid">
+    <div class="insight-card fade-in">
+      <div class="insight-num">✗</div>
+      <div class="insight-title">Nie zaczynać od frontu sprzedażowego</div>
+      <div class="insight-text">Biura „z łapanki", system 100% prowizyjny na start, zimne telefony jako główna praca — to droga do wypalenia. Najpierw warsztat, potem sprzedaż.</div>
+    </div>
+    <div class="insight-card fade-in">
+      <div class="insight-num">✗</div>
+      <div class="insight-title">Nie studiować „po to, żeby coś studiować"</div>
+      <div class="insight-text">Studia mają wzmacniać model zawodowy, nie przykrywać chaosu. Najlepszy moment to rok 3 lub 4, gdy jest już stabilność i cel.</div>
+    </div>
+    <div class="insight-card fade-in">
+      <div class="insight-num">✓</div>
+      <div class="insight-title">Budować przewagę nieosiągalną dla AI</div>
+      <div class="insight-text">Relacja, zaufanie, negocjacje, odpowiedzialność, emocjonalne prowadzenie klienta przez złożoną decyzję. To właśnie AI nie zastąpi w nieruchomościach.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Aleksandra</div>
+  <div class="footer-tagline">Ścieżka do specjalistki od obrotu nieruchomościami · 2026–2031</div>
+</footer>
+
+<script>
+  // Intersection Observer for fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Active nav on scroll
+  const sections = document.querySelectorAll('[id]');
+  const navItems = document.querySelectorAll('.nav-item');
+
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navItems.forEach(item => {
+          item.classList.remove('active');
+          if (item.getAttribute('href') === '#' + id) {
+            item.classList.add('active');
+          }
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(section => navObserver.observe(section));
+
+  // Bar animation on scroll
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.skill-bar-fill').forEach((bar, i) => {
+          bar.style.animationDelay = (i * 0.1) + 's';
+          bar.style.animationPlayState = 'running';
+        });
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.skills-bars').forEach(el => barObserver.observe(el));
+</script>
+
+</body>
+</html>
